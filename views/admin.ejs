@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="/css/admin.css">
+
+<div id="page">
+    <div id="left-content">
+        <h3>Admin Dashboard</h3>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/users/employee">Manage Employee</a></li>
+        <li><a href="/users/sign-up">New Employee</a></li>
+        <li><a href="/users/sign-out">Logout</a></li>
+    </div>
+    <div id="right-content">
+    <div id="bottom">
+        <h3>List of Admin</h3>
+        <ul>
+           <% for(user of profile_user){%>
+            <% if(user.user_type =='admin'){%>
+                <li>
+                    <img src="<%= user.avatar%>" alt="<%= user.name%>" width="50px" height="50px">
+                    <a href="/users/profile/<%= user.id%>">Name: <%= user.name%></a>
+                    <p>Email: <%= user.email%></p>
+                    <a href="/users/edit/<%= user.id%>"><input type="submit" value="Edit"></a>
+                    <% if(user.name !='Admin'){%>
+                    <a href="/users/removeAdmin/<%= user.id%>"><input type="submit" value="Remove Admin"></a>
+                    <%}%>
+                </li>
+                <%}%>
+            <%}%>
+        </ul>
+    </div>
+    <div>
+        <h1>Assign Review to Employees</h1>
+        <form action="/users/createReview" method="post">
+            <label for="recipient">Recipient : </label>
+            <select name="recipient">
+                <%for (user of profile_user){%>
+                    <option value="<%=user.id%>"><%=user.name%></option>
+                    <%}%>
+                
+            </select>
+            
+            <label for="reviewer">Reviewer : </label>
+            <select name="reviewer">
+                <%for(user of profile_user){%>
+                    <option value="<%=user.id%>"><%=user.name%></option>
+                    <%}%>
+                
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+        <div>
+            <%for(MyReview of myReviews){%>
+                <li>Review of <%=MyReview.to.name%>: <%=MyReview.message%></li>
+                <%}%>
+        </div>
+    </div>
+    </div>
+</div>
+</div>

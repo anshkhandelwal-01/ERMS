@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/css/profile.css">
+
+<div id="profile-window">
+<ul>
+    <% for(user of user){%>
+     <% if(user.user_type =='employee'){%>
+         <li>
+             <img src="<%= user.avatar%>" alt="<%= user.name%>" width="50px" height="50px">
+             <a href="/users/profile/<%= user.id%>">Name: <%= user.name%></a>
+             <p>Email: <%= user.email%></p>
+             <a href="/users/edit/<%= user.id%>"><input type="submit" value="Edit"></a>
+             <a href="/users/createAdmin/<%= user.id%>"><input type="submit" value="Add Admin"></a>
+             <a href="/users/remove/<%= user.id%>"><input type="submit" value="Remove"></a>
+         </li>
+         <%}%>
+     <%}%>
+ </ul>
+</div>

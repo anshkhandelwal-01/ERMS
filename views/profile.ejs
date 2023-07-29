@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="/css/profile.css">
+
+<div id="profile-window">
+<div id="profile">
+    <h1>
+    Hi <%= profile_user.name%>! Here is your profile.
+</h1>
+<p><img src="<%= profile_user.avatar%>" alt="<%=profile_user.name%>" width="200px" height="200px"></p>
+<p>User Name: <%= profile_user.name %></p>
+<p>User Email ID: <%= profile_user.email %></p>
+<a href="/users/edit/<%= profile_user.id%>"><input type="submit" value="Update"></a>
+</div>
+<div id="reviews">
+    <div>
+    <h2>Assigned Reviews</h2>
+        <%for(AssignedReview of user_assignedReviews){%>
+            <form action="/users/completeReview" method="post">
+                <label for="">To : <%=AssignedReview.to.name%></label>
+                <textarea name="message" placeholder="Enter Review comments" required></textarea>
+                <input type="hidden" name="to" value="<%=AssignedReview.to._id%>">
+                <button type="submit">Submit</button>
+            </form>
+                <%}%> 
+        </div>
+    <div>
+        <h2>My Feedbacks</h2>
+        <%for(MyReview of user_reviews){%>
+            <p>From : <%=MyReview.from.name%></p>
+            <p>Review : <span ><%=MyReview.message%></span></p>
+              <%}%> 
+        </div>
+        </div>
+</div>

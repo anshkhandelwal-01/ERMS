@@ -1,0 +1,9 @@
+.login-window{
+    background-color: lightgray;
+    height: 80vh;
+    /* margin-top: -22px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    text-align: center;
+}

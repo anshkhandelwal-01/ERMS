@@ -1,0 +1,27 @@
+#page{
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+}
+
+#left-content{
+    width: 15vw;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+#right-content{
+    width: 85vw;
+    background-color: pink;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+}
+
+.content{
+    width: 15vw;
+    height: 15vh;
+    border: 1px solid black;
+}
